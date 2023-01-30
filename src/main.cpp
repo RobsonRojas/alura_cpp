@@ -2,8 +2,7 @@
 #include <cstdlib>
 #include <ctime>
 
-int main(int argc, char *argv[])
-{
+void advinhacao() {
 	std::cout << "***************************************" << std::endl;
 	std::cout << "*  Bem vindo ao jogo de advinhação! *" << std::endl;
 	std::cout << "***************************************" << std::endl;
@@ -62,6 +61,11 @@ int main(int argc, char *argv[])
 		std::cout << std::fixed;
 		std::cout << "Sua pontuação foi de: " << pontos << std::endl;		
 	}
+}
+
+int main(int argc, char *argv[])
+{
+	advinhacao();
 
 	return 0;
 }
