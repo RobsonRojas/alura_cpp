@@ -257,7 +257,8 @@ void forca() {
 int main(int argc, char *argv[])
 {
 	// forca();
-	print_number_sufix();
+	// print_number_sufix();
+	centered_text();
 
 	return 0;
 }
