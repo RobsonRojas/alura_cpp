@@ -1,0 +1,5 @@
+output/
+.vscode
+src/main.o
+src/linkedin_learning/*.o
+src/main.o

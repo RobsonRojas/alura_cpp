@@ -6,6 +6,8 @@
 #include <vector>
 #include <fstream>
 
+#include "linkedin_learning/linkedin.h"
+
 using namespace std;
 
 int nivel_dificuldade() {
@@ -254,7 +256,8 @@ void forca() {
 
 int main(int argc, char *argv[])
 {
-	forca();
+	// forca();
+	print_number_sufix();
 
 	return 0;
 }
