@@ -3,3 +3,4 @@ output/
 src/main.o
 src/linkedin_learning/*.o
 src/main.o
+src/alura/forca.o src/alura/letra_existe.o src/alura/utils.o
