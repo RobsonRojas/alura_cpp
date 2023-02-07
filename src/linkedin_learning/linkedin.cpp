@@ -74,3 +74,47 @@ void centered_text() {
     
 
 }
+
+
+static const unsigned int kPenny = 1; // "1 (one) cent = 1 centavo - penny
+static const unsigned int kNickel = 5; // 5 (five) cents = 5 centavos -"a nickel"
+static const unsigned int kDime = 10; // 10 (ten) cents = 10 centavos - dime
+static const unsigned int kQuarter = 25; // 25 (twenty-five) cents = 25 centavos - quarter
+
+void change_coins(float amount) {
+    unsigned int dimes = 0;
+    unsigned int nickels = 0;
+    unsigned int pennies = 0;
+
+    unsigned int quarters = amount*100 / kQuarter;    
+    double remaind =  (amount*100 - (kQuarter * quarters));
+
+    dimes = remaind / kDime;
+    remaind = (remaind - (kDime * dimes));
+
+    nickels = remaind / kNickel;
+    remaind = (remaind - (kNickel * nickels));
+
+    pennies = remaind / kPenny;
+    remaind = (remaind - (kPenny * pennies));
+    cout << amount << " = " << quarters << " quarters " 
+                            << dimes << " dimes "
+                            << nickels << " nickels "
+                            << pennies << " pennies " << endl << endl;
+
+
+}
+
+void change_coins(){
+    change_coins(0.49);
+    change_coins(1.27);
+    change_coins(0.75);
+    change_coins(1.31);
+    change_coins(0.83);
+
+
+
+
+
+
+}
