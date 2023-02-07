@@ -3,6 +3,8 @@
 #include <fstream>
 #include <iostream>
 #include <cstdlib>
+#include <array>
+#include <vector>
 
 #include "utils.h"
 
@@ -14,7 +16,8 @@ static map<char, bool> chutou {{'M', false}, {'E', false},
 						{'N', false}, {'C', false},
 						{'I', false},{'A', false}};
 
-static vector<char> chutes_errados;
+static array<char, 6> chutes_errados;
+static int chutes_errados_count = -1; 
 
 inline void imprime_cabecalho_forca() {
 	std::cout << "***************************************" << std::endl;
@@ -87,7 +90,7 @@ void chuta(const string &palavra_secreta) {
 		cout << "Você acertou! Seu chute está na palavra." << endl;
 	} else {
 		cout << "Você errou! Seu chute não está na palavra." << endl;
-		chutes_errados.push_back(chute);
+		chutes_errados[++chutes_errados_count] = chute;
 	}
 	cout << endl;
 }
@@ -124,7 +127,7 @@ void forca() {
 
 	// cout << nro_tentativas << endl;
 	while (nao_acertou(palavra_secreta, chutou)
-								&& chutes_errados.size() < 5) {
+								&& chutes_errados_count < 5) {
 		imprime_erros();
 		imprime_palavra(palavra_secreta);
 
