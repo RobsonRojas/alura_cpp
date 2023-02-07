@@ -1,14 +1,10 @@
+#pragma once
+
 #include <string>
 #include <map>
 #include <vector>
 
-using namespace std;
+bool letra_existe(const char chute, const std::string &palavra);
 
-extern map<char, bool> chutou;
-extern vector<char> chutes_errados;
-
-bool letra_existe(char chute, string palavra);
-
-bool nao_acertou(string palavra_secreta);
-
-bool nao_enforcou();
+bool nao_acertou(const std::string &palavra_secreta,
+                    const std::map<char, bool> &chutou);

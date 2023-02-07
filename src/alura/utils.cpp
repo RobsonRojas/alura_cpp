@@ -4,13 +4,7 @@
 
 using namespace std;
 
-map<char, bool> chutou {{'M', false}, {'E', false},
-						{'L', false}, {'A', false},
-						{'N', false}, {'C', false},
-						{'I', false},{'A', false}};
-vector<char> chutes_errados;
-
-bool letra_existe(char chute, string palavra) {
+bool letra_existe(char chute, const string &palavra) {
 	for (auto letra : palavra) {
 		if (letra == chute) {
 			return true;
@@ -19,17 +13,13 @@ bool letra_existe(char chute, string palavra) {
 	return false;
 }
 
-bool nao_acertou(string palavra_secreta) {
+bool nao_acertou(const string &palavra_secreta,
+						const map<char, bool> &chutou) {
 	for (auto letra : palavra_secreta) {
-		if (!chutou[letra]) {
+		if (chutou.find(letra) == chutou.end() || !chutou.at(letra) ) {
 			return true;
 		}
 	}
 
 	return false;
-}
-
-
-bool nao_enforcou() {
-	return chutes_errados.size() < 5;
 }

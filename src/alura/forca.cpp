@@ -6,14 +6,21 @@
 
 #include "utils.h"
 
-void imprime_cabecalho_forca() {
+using namespace std;
+namespace forca {
+
+static map<char, bool> chutou {{'M', false}, {'E', false},
+						{'L', false}, {'A', false},
+						{'N', false}, {'C', false},
+						{'I', false},{'A', false}};
+
+static vector<char> chutes_errados;
+
+inline void imprime_cabecalho_forca() {
 	std::cout << "***************************************" << std::endl;
 	std::cout << "*  Bem vindo ao jogo da forca! *" << std::endl;
 	std::cout << "***************************************" << std::endl;
 }
-
-
-
 
 vector<string> le_arquivo() {
 	ifstream arquivo;
@@ -56,8 +63,7 @@ void imprime_erros() {
 	cout << endl;
 }
 
-
-void imprime_palavra(string palavra_secreta) {
+void imprime_palavra(const string &palavra_secreta) {
 
 		for (auto letra : palavra_secreta) {
 			if (chutou[letra]) {
@@ -69,10 +75,7 @@ void imprime_palavra(string palavra_secreta) {
 		cout << endl;
 }
 
-
-
-
-void chuta(string palavra_secreta) {
+void chuta(const string &palavra_secreta) {
 	char chute = ' ';
 	std::cout << "Seu chute: " << std::endl;
 	
@@ -89,7 +92,7 @@ void chuta(string palavra_secreta) {
 	cout << endl;
 }
 
-void salva_arquivo(vector<string> palavras) {
+void salva_arquivo(const vector<string> &palavras) {
 	ofstream arquivo;
 	arquivo.open("palavras.txt");
 
@@ -111,9 +114,6 @@ void adiciona_palavra() {
 	vector<string> lista_palavras = le_arquivo();
 	lista_palavras.push_back(palavra);
 	salva_arquivo(lista_palavras);
-
-	
-
 }
 
 void forca() {
@@ -123,7 +123,8 @@ void forca() {
 	// cout << palavra_secreta << endl;
 
 	// cout << nro_tentativas << endl;
-	while (nao_acertou(palavra_secreta) && nao_enforcou()) {
+	while (nao_acertou(palavra_secreta, chutou)
+								&& chutes_errados.size() < 5) {
 		imprime_erros();
 		imprime_palavra(palavra_secreta);
 
@@ -133,11 +134,13 @@ void forca() {
 	std::cout << "Fim de jogo!" << std::endl;
 	cout << "A palavra secreta é: " << palavra_secreta << endl;
 
-	if (nao_acertou(palavra_secreta)) {
-		std::cout << "Você foi enforcado! Tente novamente." << std::endl;
+	if (nao_acertou(palavra_secreta, chutou)) {
+		std::cout << "Você foi enforcado! Tente novamente." 
+													<< std::endl;
 	} else {
 		std::cout << "Você acertou! " << std::endl;	
-		cout << "Você deseja adicionar uma nova palavra ao banco? (S/N): " << endl;
+		cout << "Você deseja adicionar uma nova palavra ao banco? (S/N): "
+													<< endl;
 		char resposta;
 		cin >> resposta;
 
@@ -145,5 +148,7 @@ void forca() {
 			adiciona_palavra();
 		}
 	}
+
+}
 
 }

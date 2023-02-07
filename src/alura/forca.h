@@ -1,2 +1,4 @@
-
-void forca();
+#pragma once
+namespace forca {
+    void forca();
+}

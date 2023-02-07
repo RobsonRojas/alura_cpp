@@ -91,7 +91,7 @@ void advinhacao() {
 
 int main(int argc, char *argv[])
 {
-	forca();
+	forca::forca();
 	// print_number_sufix();
 	// centered_text();
 
