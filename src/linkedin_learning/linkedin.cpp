@@ -111,10 +111,19 @@ void change_coins(){
     change_coins(0.75);
     change_coins(1.31);
     change_coins(0.83);
+}
 
 
+void halistone_sequence(int n) {
+    cout << n << " ";
+    if (n == 1) {
+        cout << endl;
+        return;
+    }
 
-
-
-
+    if (n % 2 == 0) {
+        halistone_sequence(n / 2);
+    } else {
+        halistone_sequence((n*3) + 1);
+    }
 }

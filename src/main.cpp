@@ -91,10 +91,35 @@ void advinhacao() {
 
 int main(int argc, char *argv[])
 {
+	if (argc <= 1)
+	{
+		cout << "argc: " << argc << endl;
+		return 0;
+	}
+	
 	// forca::forca();
 	// print_number_sufix();
 	// centered_text();
-	change_coins();
+	// change_coins();
+
+	// for (size_t i = 0; i < argc; i++)
+	// {
+	// 	cout << argv[i] << " ";
+	// }
+	// cout << endl;
+	int arg = 0;
+	
+	try {
+		arg = stoi(argv[1]);
+		// cout << "arg " << arg << endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "Invalid argment: " << argv[1] << '\n';
+		return -1;
+	}
+	
+	halistone_sequence(arg);
 
 	return 0;
 }
