@@ -12,3 +12,5 @@ void centered_text();
 void change_coins();
 
 void halistone_sequence(int n);
+
+void perfect_sufle();

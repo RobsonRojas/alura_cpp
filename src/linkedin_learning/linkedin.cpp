@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include <iomanip>
+#include <array>
+#include <algorithm>
 
 string number_to_ordinal_sufix(int num) {
     if (num == 11 || num == 12) {
@@ -126,4 +128,56 @@ void halistone_sequence(int n) {
     } else {
         halistone_sequence((n*3) + 1);
     }
+}
+
+array<char, 13> copy_half(array<char, 26> arr, int from_idx) {
+    array<char, 13> part1;
+    for (size_t i = 0; i < 13; i++) {
+        part1[i] = arr[i + from_idx];
+    }
+
+    return part1;
+}
+
+void print_half(array<char, 13> arr) {
+    for (auto &&i : arr) {
+        cout << i << " ";
+    }
+}
+
+void perfect_sufle() {
+    array<char, 26> cards = {{'A','B','C','D','E','F','G',
+                                'H','I','J','K','L','M','N',
+                                'O','P','Q','R','S','T','U',
+                                'V','W','X','Y','Z'}};
+    array<char, 26> original = cards;
+
+    array<char, 13> part1 = copy_half(cards, 0);
+    array<char, 13> part2 = copy_half(cards, 13);
+
+    cout << "part 1: ";
+    print_half(part1);
+    // for (auto &&i : part1)
+    // {
+    //     cout << i << " ";
+    // }
+    cout << endl << "part 2: ";
+    print_half(part2);
+    // for (auto &&j : part2)
+    // {
+    //     cout << j << " ";
+    // }
+
+    cout << endl;
+
+
+
+
+
+    
+
+
+    
+
+
 }
