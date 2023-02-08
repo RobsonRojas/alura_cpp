@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <iomanip>
-#include <array>
+#include <vector>
 #include <algorithm>
 
 string number_to_ordinal_sufix(int num) {
@@ -145,39 +145,39 @@ void print_half(array<char, 13> arr) {
     }
 }
 
-void perfect_sufle() {
-    array<char, 26> cards = {{'A','B','C','D','E','F','G',
-                                'H','I','J','K','L','M','N',
-                                'O','P','Q','R','S','T','U',
-                                'V','W','X','Y','Z'}};
-    array<char, 26> original = cards;
-
-    array<char, 13> part1 = copy_half(cards, 0);
-    array<char, 13> part2 = copy_half(cards, 13);
-
-    cout << "part 1: ";
-    print_half(part1);
-    // for (auto &&i : part1)
-    // {
-    //     cout << i << " ";
-    // }
-    cout << endl << "part 2: ";
-    print_half(part2);
-    // for (auto &&j : part2)
-    // {
-    //     cout << j << " ";
-    // }
+void print_vector(vector<char> & vec) {
+    for (auto &&i : vec) {
+        cout << i << " ";
+    }
 
     cout << endl;
+}
 
+void shuffle(vector<char> & vec) {
+    auto local_vec = vec;
+    size_t half = local_vec.size() / 2;
+    vec.clear();
+    for (size_t i = 0; i < half; i++) {
+        vec.push_back(local_vec[i]);
+        vec.push_back(local_vec[i + half]);
+    }
+}
 
-
-
+void perfect_sufle() {
+    vector<char> cards = {'A','B','C','D','E','F','G',
+                                'H','I','J','K','L','M','N',
+                                'O','P','Q','R','S','T','U',
+                                'V','W','X','Y','Z'};
 
     
+    vector<char> original = cards;
+    unsigned int shuffle_count = 0;
 
+    do {
+        shuffle(cards);
+        print_vector(cards);
+        shuffle_count++;
+    } while (cards != original);
 
-    
-
-
+    cout << "cards == original in " << shuffle_count << " runs" << endl;
 }
